@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add smooth zoom transitions */
+#canvas-container {
+  transition: transform 0.1s ease;
+}
+
+/* Hide scrollbars but keep functionality */
+#canvas-container {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#canvas-container::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-dash {
+  animation: dash 20s linear infinite;
+}
+
+.connection-line path {
+  transition: stroke-width 0.2s ease, filter 0.2s ease;
+}
+
+.connection-line path:hover {
+  stroke-width: 3;
+}
+
+.node-connection-point {
+  transition: all 0.2s ease;
+  transform-origin: center;
+}
+
+.node-connection-point:hover {
+  transform: scale(1.5);
+  filter: drop-shadow(0 0 4px rgba(79, 70, 229, 0.5));
+}
+
+.draggable-node {
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.draggable-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.draggable-node.dragging {
+  transform: scale(1.02);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Disable default touch behaviors */
+#canvas-container {
+  touch-action: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
+}
+
+/* Smooth zoom transitions */
+#canvas-container > div {
+  transition: transform 0.1s ease;
+}
+
+/* Connection animations */
+@keyframes connection-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.connection-point {
+  animation: connection-pulse 2s ease-in-out infinite;
+}
+
+/* Node hover effects */
+.node-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.node-hover-effect:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Connection line hover effect */
+.connection-line:hover {
+  filter: drop-shadow(0 0 8px rgba(79, 70, 229, 0.5));
+}
